@@ -35,7 +35,7 @@
 	<select id="list" parameterType="Paging" resultType="BoardVO">
 		select
 		*
-		from tbl_board-
+		from tbl_board
 		<if test="sType != null">
 			<if test="sType eq 'title'.toString()">
 			 and title like '%'||#{keyword}||'%' 
