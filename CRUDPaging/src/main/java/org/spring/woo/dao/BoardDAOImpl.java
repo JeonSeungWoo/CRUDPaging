@@ -1,9 +1,12 @@
 package org.spring.woo.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.spring.woo.domain.BoardVO;
+import org.spring.woo.domain.Paging;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -31,6 +34,16 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public void delete(int bno) throws Exception {
 		session.delete(name+"delete",bno);
+	}
+	@Override
+	public List<BoardVO> list(Paging paging) throws Exception {
+		// TODO Auto-generated method stub
+		return session.selectList(name + "list",paging);
+	}
+	@Override
+	public int listCount() throws Exception {
+		// TODO Auto-generated method stub
+		return session.selectOne(name+"listCount");
 	}
 
 }

@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spring.woo.domain.BoardVO;
+import org.spring.woo.domain.Paging;
 import org.spring.woo.service.BoardService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,6 +53,14 @@ public class BoardController {
 		return "redirect:/board/insertPage";
 
 	}
+
+	@RequestMapping(value = "/listPage", method = RequestMethod.GET)
+	public void listPage(Model model,int page,Paging paging) throws Exception {
+		
+		model.addAttribute("list",service.list(paging));
+		model.addAttribute("Paging", new Paging(page, service.listCount()));
+	}
+
 	
 
 		
