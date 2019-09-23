@@ -45,4 +45,5 @@
 	</bean>
 <context:component-scan base-package="org.spring.woo.test.dao" />
 
+
 </beans>
