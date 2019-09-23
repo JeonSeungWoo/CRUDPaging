@@ -38,10 +38,10 @@
 		from tbl_board
 		<if test="sType != null">
 			<if test="sType eq 'title'.toString()">
-			 and title like '%'||#{keyword}||'%' 
+			 where title like '%'||#{keyword}||'%' 
 			 </if>
 			<if test="sType eq 'content'.toString()">
-			 and content like '%'||#{keyword}||'%' 
+			 where content like '%'||#{keyword}||'%' 
 			 </if>
 		</if>
 		
@@ -53,10 +53,10 @@
 		select count(1) from tbl_board
 		 <if test="sType != null">
 			<if test="sType eq 'title'.toString()">
-			 and title like '%'||#{keyword}||'%' 
+			 where title like '%'||#{keyword}||'%' 
 			 </if>
 			<if test="sType eq 'content'.toString()">
-			 and content like '%'||#{keyword}||'%' 
+			 where content like '%'||#{keyword}||'%' 
 			 </if>
 		</if>
 	</select>

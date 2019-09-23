@@ -32,7 +32,7 @@ public class BoardController {
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String insert(Model model, BoardVO vo) throws Exception {
 		service.insert(vo);
-		return "redirect:/board/insertPage";
+		return "redirect:/board/listPage?page=1";
 	}
 	//read기능 bno를 파라미터로 가져와야 한다.
 	@RequestMapping(value = "/read", method = RequestMethod.GET)
@@ -44,13 +44,13 @@ public class BoardController {
 	public String update(Model model, BoardVO vo) throws Exception {
 		logger.info("update Test ::   ");
 		service.update(vo);
-		return "redirect:/board/insertPage";
+		return "redirect:/board/listPage?page=1";
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String delete(Model model, int bno) throws Exception {
 		service.delete(bno);
-		return "redirect:/board/insertPage";
+		return "redirect:/board/listPage?page=1";
 
 	}
 

@@ -146,6 +146,7 @@
 		</form>
 </div>
 <!--검색 End  -->
+<form id="form2">
 <table border="1">
 <tr>
 <th>번호</th>
@@ -161,10 +162,9 @@
 </tr>
   </c:forEach>
 </table>
-
+<button type="button" id="insertBtn" >등록</button>
       
-      
-      
+ </form>
 <p class="paging">
 		<c:if test="${Paging.prev}">
 			<a  class="page_btn btn_prev" href="listPage?page=${(Paging.startPage - 1)}">이전</a>
@@ -188,11 +188,16 @@
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 <script type="text/javascript">
  $(document).ready(function(){
-	 var form = $("#form");
+	
 	$("#sBtn").on("click",function(event){
 		event.preventDefault();
 		$("#pageHidden").val(1);
 		$("#form").submit();
+	});
+	
+	 
+	$("#insertBtn").on("click",function(){
+		$("#form2").attr("action","insertPage").attr("method","get").submit();
 	});
 
 	
