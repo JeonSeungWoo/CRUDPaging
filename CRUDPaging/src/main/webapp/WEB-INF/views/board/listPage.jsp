@@ -84,7 +84,11 @@
   bottom:0;
 }
 
+#content{
 
+
+
+}
 /*paging Img  */
 .pagingNum{
   background:#1AAB8A;
@@ -145,8 +149,11 @@
              
 		</form>
 </div>
+
 <!--검색 End  -->
+<div id="content">
 <form id="form2">
+
 <table border="1">
 <tr>
 <th>번호</th>
@@ -182,6 +189,7 @@
 		</c:if>
 
 </p>
+</div>
 
 
 </body>

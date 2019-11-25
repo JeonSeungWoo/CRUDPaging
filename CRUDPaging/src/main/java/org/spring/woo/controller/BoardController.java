@@ -13,28 +13,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@Controller     //ÄÁÆ®·Ñ·¯ ¾î³ëÅ×ÀÌ¼Ç
-@RequestMapping("/board/*")   //°æ·Î ¼³Á¤ ¸Þ¼Òµå (board¹ØÀ¸·Î ÀüºÎ °æ·Î ¼³Á¤µÈ´Ù.)
+@Controller     //ï¿½ï¿½Æ®ï¿½Ñ·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¼ï¿½
+@RequestMapping("/board/*")   //ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½ (boardï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½È´ï¿½.)
 public class BoardController {
-	//logger.info»ç¿ë (sysout°°Àº°Å´Ù.{±âº» ÄÁÆ®·Ñ·¯¿¡ ÀÌ¹Ì µÇ¾î ÀÖ´Ù.})
+	//logger.infoï¿½ï¿½ï¿½ (sysoutï¿½ï¿½ï¿½ï¿½ï¿½Å´ï¿½.{ï¿½âº» ï¿½ï¿½Æ®ï¿½Ñ·ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½Ç¾ï¿½ ï¿½Ö´ï¿½.})
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
-	//service °¡Á®¿À±â
+	//service ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@Inject
 	private BoardService service;
 	
-	//insertPage¼³Á¤.(view.board.insertPage·Î °æ·Î°¡ ¼³Á¤ µÇ¾î ÀÖ´Ù.)
-	//web.xmp¿¡¼­ È®ÀÎ °¡´É.
+	//insertPageï¿½ï¿½ï¿½ï¿½.(view.board.insertPageï¿½ï¿½ ï¿½ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ ï¿½Ö´ï¿½.)
+	//web.xmpï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 	@RequestMapping(value = "/insertPage", method = RequestMethod.GET)
 	public void insertPage() throws Exception {
 	}
 	
-	//insert ±â´É redirect´Â ÀÌ °æ·Î·Î ÀÌµ¿ÇÏ°Ô µÈ´Ù.
+	//insert ï¿½ï¿½ï¿½ redirectï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Î·ï¿½ ï¿½Ìµï¿½ï¿½Ï°ï¿½ ï¿½È´ï¿½.
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String insert(Model model, BoardVO vo) throws Exception {
 		service.insert(vo);
 		return "redirect:/board/listPage?page=1";
 	}
-	//read±â´É bno¸¦ ÆÄ¶ó¹ÌÅÍ·Î °¡Á®¿Í¾ß ÇÑ´Ù.
+	//readï¿½ï¿½ï¿½ bnoï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Í·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¾ï¿½ ï¿½Ñ´ï¿½.
 	@RequestMapping(value = "/read", method = RequestMethod.GET)
 	public void readPage(Model model, @RequestParam("bno") int bno) throws Exception {
 		model.addAttribute("vo", service.read(bno));

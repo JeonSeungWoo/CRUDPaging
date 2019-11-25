@@ -1,51 +1,49 @@
 package org.spring.woo.domain;
 
 public class Paging {
-	private boolean prev; //ÀÌÀü
-	private boolean next; //´ÙÀ½
-	private int startPage; //½ÃÀÛ ÆäÀÌÁö
-	private int endPage; //³¡ ÆäÀÌÁö
-	private int totalPage; //ÀüÃ¼ ÆäÀÌÁö
-	private int page; //ÆäÀÌÁö ¹øÈ£
-    private int pageSize = 10; //ÆäÀÌÁö Å©±â
+	private boolean prev; //ì´ì „
+	private boolean next; //ë‹¤ìŒ
+	private int startPage; //ì‹œì‘ í˜ì´ì§€
+	private int endPage; //ë í˜ì´ì§€
+	private int totalPage; //ì „ì²´ í˜ì´ì§€
+	private int page; //í˜ì´ì§€ ë²ˆí˜¸
+    private int pageSize = 10; //í˜ì´ì§€ í¬ê¸°
     
-    //°Ë»ö±â´ÉÀ» »ç¿ëÇÒ ¶§¸¸.
-	private String keyword; //Å°¿öµå
-	private String sType; //°Ë»ö Å¸ÀÔ.
-	
+    //ê²€ìƒ‰ê¸°ëŠ¥ì„ ì‚¬ìš©í•  ë•Œë§Œ.
+	private String keyword; //í‚¤ì›Œë“œ
+	private String sType; //ê²€ìƒ‰ íƒ€ì….
 	public Paging() {
-		
 	}
-	
-	//ÆäÀÌÁö¿Í ÀüÃ¼ ÆäÀÌÁö¸¦ °¡Á®¿Â´Ù.
+	//í˜ì´ì§€ì™€ ì „ì²´ í˜ì´ì§€ë¥¼ ê°€ì ¸ì˜¨ë‹¤.
 	public Paging(int page,int totalPage) {
 		this.totalPage = totalPage;
 		this.page = page;
 		calcPage();
 	}
 
-	//ÆäÀÌÂ¡ Ã³¸®.
+	//í˜ì´ì§• ì²˜ë¦¬.
 	private void calcPage() {
-		//ÆäÀÌÁö°¡ ¸¸¾à 0º¸´Ù ÀÛÀ»¶§ ÆäÀÌÁö´Â ¹«Á¶°Ç 1ÆäÀÌÁö´Ù.
 //		if (page <= 0) {
 //			page = 1;
 //		}
 //		page = ( page - 1 ) * pageSize;
 		
-		//¿Ã¸².(0.1~0.9 = 1*10 ,1.1~1.9 = 2*10)
+		//10ì¼ë•Œ
+		//ì˜¬ë¦¼.(0.1~0.9 = 1*10 ,1.1~1.9 = 2*10)
 		int tempEnd = (int)(Math.ceil(page/10.0) * 10);
-		
-		//½ÃÀÛÆäÀÌÁö 
 		startPage = tempEnd -9;
 		
-		//ÀÌÀü Å¬¸¯½Ã (ÆäÀÌÁö°¡ 1ÀÏ¶§´Â prev°¡ º¸ÀÌ¸é ¾ÈµÈ´Ù.)
+		//5ì¼ë•Œ
+//		int tempEnd = (int)(Math.ceil(page/5.0) * 5);
+//		startPage = tempEnd -4;
+		//ì´ì „ í´ë¦­ì‹œ (í˜ì´ì§€ê°€ 1ì¼ë•ŒëŠ” prevê°€ ë³´ì´ë©´ ì•ˆëœë‹¤.)
 		prev = startPage == 1 ? false : true;
 		
-		//³¡³ª´Â ÆäÀÌÁö ¼³Á¤. ¿ÏÀüÈ÷ ¸¶Áö¸· ÆäÀÌÁö.
+		//ëë‚˜ëŠ” í˜ì´ì§€ ì„¤ì •. ì™„ì „íˆ ë§ˆì§€ë§‰ í˜ì´ì§€
 		if(tempEnd * pageSize >= totalPage){
 			 
-			endPage = (int)(Math.ceil(totalPage/pageSize)+1);
-			//¿ÏÀüÈ÷ ¸¶Áö¸·¿¡¼­´Â next°¡ º¸ÀÌ¸é ¾ÈµÈ´Ù.
+			endPage = (int)(Math.ceil(totalPage/pageSize));
+			//ì™„ì „íˆ ë§ˆì§€ë§‰ì—ì„œëŠ” nextê°€ ë³´ì´ë©´ ì•ˆëœë‹¤
 			next = false;
 			
 		}else{
